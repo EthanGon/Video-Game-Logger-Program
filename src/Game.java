@@ -2,6 +2,7 @@ public class Game {
     private String name;
     private String platform;
     private int yearReleased;
+    private boolean gameBeaten = false;
 
     public void setName(String name) {
         this.name = name;
