@@ -28,7 +28,7 @@ public class Main {
             } else if (input.equalsIgnoreCase("2")) {
                 defaultUser.addGame(sc);
             } else if (input.equalsIgnoreCase("3")) {
-                System.out.println("TODO: Add method to remove game from list.");
+                defaultUser.removeGame(sc);
             } else if (input.equalsIgnoreCase("4")) {
                 System.out.println("Exiting Program...");
                 continueProgram = false;

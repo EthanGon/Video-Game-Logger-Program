@@ -88,13 +88,29 @@ public class User {
     }
 
     public void removeGame(Scanner sc) {
-        String input = "";
+        int index = 0;
         boolean repeatMethod = true;
+        boolean askAgain = true;
+        sc = new Scanner(System.in);
         listGames();
         System.out.println("Which game do you want to remove? (Input a number): ");
 
+        index = sc.nextInt() - 1;
 
+        while (askAgain) {
+            if (index < 0 || index >= numOfGames) {
+                System.out.print("Invalid number.. Please enter a valid number: ");
+                index = sc.nextInt();
+            } else {
+                askAgain = false;
+            }
+        }
 
+        String nameOfGame = games[index].getName(); // get name of game at index before removing it.
+
+        // TODO: add for loop that will remove the index, and shift everything down
+
+        System.out.println(nameOfGame + " has been removed.");
 
     }
 
