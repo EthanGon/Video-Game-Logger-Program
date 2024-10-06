@@ -70,7 +70,8 @@ public class User {
         System.out.println();
         System.out.println("List of games: ");
         for (int i = 0; i < numOfGames; i++) {
-            System.out.printf((i + 1) + ". %-20s", games[i].getName());
+            System.out.printf((i + 1) + ". %-20s\n", games[i].getName());
+            System.out.printf("Game Completion Status:" + ". %-20s\n", games[i].printGameStatus());
             count++;
             if (count % 3 == 0) {
                 System.out.println();

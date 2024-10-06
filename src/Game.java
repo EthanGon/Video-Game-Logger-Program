@@ -27,4 +27,12 @@ public class Game {
     public int getYearReleased() {
         return yearReleased;
     }
+
+    public String printGameStatus() {
+        if (gameBeaten) {
+            return "GAME BEATEN";
+        } else {
+            return "GAME UNFINISHED";
+        }
+    }
 }
