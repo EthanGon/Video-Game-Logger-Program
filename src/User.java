@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class User {
@@ -71,7 +73,7 @@ public class User {
         System.out.println("List of games: ");
         for (int i = 0; i < numOfGames; i++) {
             System.out.printf((i + 1) + ". %-20s\n", games[i].getName());
-            System.out.printf("Game Completion Status:" + ". %-20s\n", games[i].printGameStatus());
+            System.out.printf("Game Completion Status: " + "%-20s\n", games[i].printGameStatus());
             count++;
             if (count % 3 == 0) {
                 System.out.println();
@@ -88,30 +90,45 @@ public class User {
     }
 
     public void removeGame(Scanner sc) {
-        int index = 0;
-        boolean repeatMethod = true;
-        boolean askAgain = true;
         sc = new Scanner(System.in);
-        listGames();
+        int index = 0;
+        boolean askAgain = true;
+        this.listGames();
         System.out.println("Which game do you want to remove? (Input a number): ");
 
-        index = sc.nextInt() - 1;
-
         while (askAgain) {
-            if (index < 0 || index >= numOfGames) {
+
+            try {
+                index = Integer.parseInt(sc.nextLine());
+                if (index >= 0 && index < numOfGames) {
+                    askAgain = false;
+                } else {
+                    System.out.print("Invalid number.. Please enter a valid number: ");
+                }
+            } catch (Exception e) {
                 System.out.print("Invalid number.. Please enter a valid number: ");
-                index = sc.nextInt();
-            } else {
-                askAgain = false;
             }
+
         }
 
         String nameOfGame = games[index].getName(); // get name of game at index before removing it.
 
         // TODO: add for loop that will remove the index, and shift everything down
-
+        for (int i = index; i < numOfGames; i++) {
+            if (i != numOfGames - 1) {
+                games[i] = games[i + 1];
+            } else {
+                games[i] = null;
+            }
+        }
+        numOfGames--;
         System.out.println(nameOfGame + " has been removed.");
 
+    }
+
+    public void changeGameStatus(Scanner sc) {
+        sc = new Scanner(System.in);
+        
     }
 
 }

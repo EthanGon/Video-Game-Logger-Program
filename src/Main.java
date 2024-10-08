@@ -8,7 +8,7 @@ public class Main {
         User defaultUser = new User();
 
         System.out.println("[Video Game Logger Program]");
-        System.out.print("Enter your username: \n");
+        System.out.print("Enter your username: ");
         defaultUser.setName(sc.nextLine());
         System.out.printf("Hello %s, select an option.\n", defaultUser.getName());
 
