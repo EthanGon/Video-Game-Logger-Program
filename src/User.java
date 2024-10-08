@@ -90,61 +90,82 @@ public class User {
     }
 
     public void removeGame(Scanner sc) {
-        sc = new Scanner(System.in);
-        int index = 0;
-        boolean askAgain = true;
-        this.listGames();
-        System.out.println("Which game do you want to remove? (Input a number): ");
+        if (numOfGames > 0) {
+            sc = new Scanner(System.in);
+            int index = 0;
+            boolean askAgain = true;
+            this.listGames();
+            System.out.println("Which game do you want to remove? (Input a number): ");
 
-        while (askAgain) {
-            try {
-                index = Integer.parseInt(sc.nextLine());
-                if (index >= 0 && index < numOfGames) {
-                    askAgain = false;
-                } else {
+            while (askAgain) {
+                try {
+                    index = Integer.parseInt(sc.nextLine());
+                    index--;
+                    if (index >= 0 && index < numOfGames) {
+                        askAgain = false;
+                    } else {
+                        System.out.print("Invalid number.. Please enter a valid number: ");
+                    }
+                } catch (Exception e) {
                     System.out.print("Invalid number.. Please enter a valid number: ");
                 }
-            } catch (Exception e) {
-                System.out.print("Invalid number.. Please enter a valid number: ");
             }
-        }
 
-        String nameOfGame = games[index].getName(); // get name of game at index before removing it.
+            String nameOfGame = games[index].getName(); // get name of game at index before removing it.
 
-        // TODO: add for loop that will remove the index, and shift everything down
-        for (int i = index; i < numOfGames; i++) {
-            if (i != numOfGames - 1) {
-                games[i] = games[i + 1];
-            } else {
-                games[i] = null;
+            // TODO: add for loop that will remove the index, and shift everything down
+            for (int i = index; i < numOfGames; i++) {
+                if (i != numOfGames - 1) {
+                    games[i] = games[i + 1];
+                } else {
+                    games[i] = null;
+                }
             }
+            numOfGames--;
+            System.out.println(nameOfGame + " has been removed.");
+        } else {
+            System.out.println("You don't have any games. Please add a game before doing this option.");
         }
-        numOfGames--;
-        System.out.println(nameOfGame + " has been removed.");
 
     }
 
     public void changeGameStatus(Scanner sc) {
-        sc = new Scanner(System.in);
-        int index = 0;
-        boolean askAgain = true;
-        this.listGames();
-        System.out.println("Enter number of game to change status:");
+        if (numOfGames > 0) {
+            sc = new Scanner(System.in);
+            int index = 0;
+            String input = "";
+            String oldStatus = "";
+            boolean askAgain = true;
+            this.listGames();
+            System.out.println("Enter number of game to change status:");
 
-        while (askAgain) {
-            try {
-                index = Integer.parseInt(sc.nextLine());
-                if (index >= 0 && index < numOfGames) {
-                    askAgain = false;
-                } else {
+            while (askAgain) {
+                try {
+                    index = Integer.parseInt(sc.nextLine());
+                    index--;
+                    if (index >= 0 && index < numOfGames) {
+                        askAgain = false;
+                    } else {
+                        System.out.print("Invalid number.. Please enter a valid number: ");
+                    }
+                } catch (Exception e) {
                     System.out.print("Invalid number.. Please enter a valid number: ");
                 }
-            } catch (Exception e) {
-                System.out.print("Invalid number.. Please enter a valid number: ");
             }
+
+            oldStatus = games[index].printGameStatus();
+
+            if (this.games[index].isGameBeaten()) {
+                this.games[index].setGameBeaten(false);
+            } else {
+                this.games[index].setGameBeaten(true);
+            }
+
+            System.out.printf("%s status changed from %s to %s\n", this.games[index].getName(), oldStatus, this.games[index].printGameStatus());
+
+        } else {
+            System.out.println("You don't have any games. Please add a game before doing this option.");
         }
-
-
 
     }
 

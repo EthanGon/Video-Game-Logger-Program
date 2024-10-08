@@ -10,6 +10,14 @@ public class Game {
         return name;
     }
 
+    public Boolean isGameBeaten() {
+        return gameBeaten;
+    }
+
+    public void setGameBeaten(boolean gameBeaten) {
+        this.gameBeaten = gameBeaten;
+    }
+
     public String printGameStatus() {
         if (gameBeaten) {
             return "GAME BEATEN";
@@ -17,4 +25,6 @@ public class Game {
             return "GAME UNFINISHED";
         }
     }
+
+
 }

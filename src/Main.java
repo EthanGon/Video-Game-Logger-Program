@@ -18,7 +18,7 @@ public class Main {
             input = sc.nextLine();
 
             // Check if the input was invalid (not anything of the options)
-            while (!input.equalsIgnoreCase("1") && !input.equalsIgnoreCase("2") && !input.equalsIgnoreCase("3") && !input.equalsIgnoreCase("4")) {
+            while (!input.equalsIgnoreCase("1") && !input.equalsIgnoreCase("2") && !input.equalsIgnoreCase("3") && !input.equalsIgnoreCase("4")&&  !input.equalsIgnoreCase("5")) {
                 System.out.print("Pick option: ");
                 input = sc.nextLine();
             }
@@ -30,6 +30,8 @@ public class Main {
             } else if (input.equalsIgnoreCase("3")) {
                 defaultUser.removeGame(sc);
             } else if (input.equalsIgnoreCase("4")) {
+                defaultUser.changeGameStatus(sc);
+            } else if (input.equalsIgnoreCase("5")) {
                 System.out.println("Exiting Program...");
                 continueProgram = false;
             }
@@ -43,7 +45,8 @@ public class Main {
         System.out.println("| 1. Get List of Games     |");
         System.out.println("| 2. Add Game to List      |");
         System.out.println("| 3. Delete Game from List |");
-        System.out.println("| 4. Exit                  |");
+        System.out.println("| 4. Change Game Status    |");
+        System.out.println("| 5. Exit                  |");
         System.out.println("------- Options Menu -------");
     }
 
