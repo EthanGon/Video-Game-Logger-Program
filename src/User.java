@@ -97,7 +97,6 @@ public class User {
         System.out.println("Which game do you want to remove? (Input a number): ");
 
         while (askAgain) {
-
             try {
                 index = Integer.parseInt(sc.nextLine());
                 if (index >= 0 && index < numOfGames) {
@@ -108,7 +107,6 @@ public class User {
             } catch (Exception e) {
                 System.out.print("Invalid number.. Please enter a valid number: ");
             }
-
         }
 
         String nameOfGame = games[index].getName(); // get name of game at index before removing it.
@@ -128,7 +126,26 @@ public class User {
 
     public void changeGameStatus(Scanner sc) {
         sc = new Scanner(System.in);
-        
+        int index = 0;
+        boolean askAgain = true;
+        this.listGames();
+        System.out.println("Enter number of game to change status:");
+
+        while (askAgain) {
+            try {
+                index = Integer.parseInt(sc.nextLine());
+                if (index >= 0 && index < numOfGames) {
+                    askAgain = false;
+                } else {
+                    System.out.print("Invalid number.. Please enter a valid number: ");
+                }
+            } catch (Exception e) {
+                System.out.print("Invalid number.. Please enter a valid number: ");
+            }
+        }
+
+
+
     }
 
 }
